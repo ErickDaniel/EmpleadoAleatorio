@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/made_with_love"
+        android:textStyle="bold"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="20dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/github"
+            android:textStyle="bold"
+            android:textColor="@color/primaryTextColor"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/url_github"
+            android:textStyle="bold"
+            android:textColor="@color/primaryTextColor"
+            android:gravity="center"
+            android:autoLink="web"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/version_"
+        android:textStyle="bold"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="15dp"
+        android:gravity="center"/>
+
+</LinearLayout>
