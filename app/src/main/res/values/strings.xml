@@ -6,5 +6,7 @@
     <string name="made_with_love"><![CDATA[Made with <3 by Erick Juarez]]></string>
     <string name="github">GitHub</string>
     <string name="url_github">https://github.com/ErickDaniel</string>
-    <string name="version_">version 1.0</string>
+    <string name="version_">version</string>
+    <string name="space">" "</string>
+    <string name="created">Creada</string>
 </resources>

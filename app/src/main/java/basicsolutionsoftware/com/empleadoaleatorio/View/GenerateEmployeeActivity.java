@@ -15,6 +15,9 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
+
+import basicsolutionsoftware.com.empleadoaleatorio.BuildConfig;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
@@ -49,6 +52,7 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_employee);
+        FirebaseCrash.log(this.getClass().toString().concat(getString(R.string.space)).concat(getString(R.string.created)));
         ButterKnife.bind(this);
         initToolBar();
         presenter = new GenerateEmployeePresenter(this, this);
@@ -78,6 +82,8 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
     private void showInfo(){
         Dialog dialogInfo = new Dialog(this);
         View viewInfo = getLayoutInflater().inflate(R.layout.dialog_info_app, null, false);
+        TextView version = viewInfo.findViewById(R.id.version);
+        version.setText(getString(R.string.version_).concat(BuildConfig.VERSION_NAME));
         dialogInfo.setContentView(viewInfo);
         dialogInfo.show();
     }

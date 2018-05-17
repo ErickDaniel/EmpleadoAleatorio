@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "7219014203",
+    "firebase_url": "https://empleadoaleatorio.firebaseio.com",
+    "project_id": "empleadoaleatorio",
+    "storage_bucket": "empleadoaleatorio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7219014203:android:d74c0a874cd98a61",
+        "android_client_info": {
+          "package_name": "basicsolutionsoftware.com.empleadoaleatorio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7219014203-odb3bb4tsd7gvna9uc9fb1sl9olfk1ct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "basicsolutionsoftware.com.empleadoaleatorio",
+            "certificate_hash": "8766ed500477fe8883848397c22dac0e1399ef63"
+          }
+        },
+        {
+          "client_id": "7219014203-e5p9p12dbaq9l1l9tc5c7h6eeua1r323.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxzkXAR4FadvakJazlSRGTKXt_bMJJtJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7219014203-e5p9p12dbaq9l1l9tc5c7h6eeua1r323.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
