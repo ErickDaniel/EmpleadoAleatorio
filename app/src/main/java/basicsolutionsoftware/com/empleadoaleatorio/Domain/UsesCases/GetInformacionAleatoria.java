@@ -49,7 +49,7 @@ public class GetInformacionAleatoria implements Task {
                         }
                         break;
                     case InfoAleatoria.APELLIDO_PATERNO:
-                        max = 2363;
+                        max = 2359;
                         break;
                     case InfoAleatoria.APELLIDO_MATERNO:
                         max = 893;

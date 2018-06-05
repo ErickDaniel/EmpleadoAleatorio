@@ -4,17 +4,15 @@ import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
 
 public interface GenerateEmployeeActivityInterface {
 
-    void setNombreAleatorio(String object);
+    void setNombreAleatorio(String nombreAleatorio);
 
-    void setSegundoNombreAleatorio(String object);
+    void setSegundoNombreAleatorio(String segundoNombreAleatorio);
 
-    void setApellidoPaternoAleatorio(String object);
+    void setApellidoPaternoAleatorio(String apellidoPaternoAleatorio);
 
-    void setApellidoMaternoAleatorio(String object);
+    void setApellidoMaternoAleatorio(String apellidoMaternoAleatorio);
 
     void setEdad(String fechaCumpleanios, int edad, boolean cumplidos);
-
-    void setSexo(int randomInt);
 
     void setEntidadAleatoria(Entidad entidad);
 

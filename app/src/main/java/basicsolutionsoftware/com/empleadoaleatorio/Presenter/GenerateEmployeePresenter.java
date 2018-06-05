@@ -1,6 +1,9 @@
 package basicsolutionsoftware.com.empleadoaleatorio.Presenter;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.google.firebase.crash.FirebaseCrash;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -8,6 +11,7 @@ import org.joda.time.Days;
 import java.util.Calendar;
 import java.util.Random;
 
+import basicsolutionsoftware.com.empleadoaleatorio.Commons.Constants;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Manager.TaskManager;
@@ -15,6 +19,7 @@ import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.UsesCases.GetEntidadAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.UsesCases.GetInformacionAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Presenter.Interface.GenerateEmployeePresenterInterface;
+import basicsolutionsoftware.com.empleadoaleatorio.R;
 import basicsolutionsoftware.com.empleadoaleatorio.View.Interface.GenerateEmployeeActivityInterface;
 
 public class GenerateEmployeePresenter implements GenerateEmployeePresenterInterface {
@@ -27,6 +32,7 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
         this.context = context;
         this.callBack = callBack;
         this.taskManager = new TaskManager();
+        FirebaseCrash.log(this.getClass().toString().concat(context.getString(R.string.space)).concat(context.getString(R.string.created)));
     }
 
     private final String FORMAT_VALUE = "%04d";
@@ -158,35 +164,43 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     }
 
     @Override
-    public void getSexoAleatorio() {
-        callBack.setSexo(Utils.getRandomInt(5,6));
+    public int getSexoAleatorio() {
+        return Utils.getRandomInt(5,6);
     }
 
     @Override
-    public void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String sexo, String codigoEntidad) {
-        String primeraLetraApellidoPaterno = apellidoPaterno.substring(0, 1).toUpperCase();
-        String primeraVocalApellidoPaterno = getPrimeraVocal(apellidoPaterno).toUpperCase();
-        String primeraLetraSegundoApellidoMaterno = apellidoMaterno.substring(0, 1).toUpperCase();
-        String primeraLetraNombre = nombre.substring(0, 1).toUpperCase();
-        String fechaNacimientoClean = getFechaNacimientoClean(fechaNacimiento).toUpperCase();
-        String sexoClean = sexo.equals("Hombre") ? "H":"M";
-        String consonanteInternaA = getConsonanteInterna(apellidoPaterno).toUpperCase();
-        String consonanteInternaB = getConsonanteInterna(apellidoMaterno).toUpperCase();
-        String consonanteInternaC = getConsonanteInterna(nombre).toUpperCase();
-        String curp = primeraLetraApellidoPaterno;
-        curp = curp.concat(primeraVocalApellidoPaterno);
-        curp = curp.concat(primeraLetraSegundoApellidoMaterno);
-        curp = curp.concat(primeraLetraNombre);
-        curp = curp.concat(fechaNacimientoClean);
-        curp = curp.concat(sexoClean);
-        curp = curp.concat(codigoEntidad);
-        curp = curp.concat(consonanteInternaA);
-        curp = curp.concat(consonanteInternaB);
-        curp = curp.concat(consonanteInternaC);;
+    public void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int sexo, String codigoEntidad) {
+        try {
+            String primeraLetraApellidoPaterno = apellidoPaterno.substring(0, 1).toUpperCase();
+            String primeraVocalApellidoPaterno = getPrimeraVocal(apellidoPaterno).toUpperCase();
+            String primeraLetraSegundoApellidoMaterno = apellidoMaterno.substring(0, 1).toUpperCase();
+            String primeraLetraNombre = nombre.substring(0, 1).toUpperCase();
+            String fechaNacimientoClean = getFechaNacimientoClean(fechaNacimiento).toUpperCase();
+            String sexoClean = sexo== 5 ? "H" : "M";
+            String consonanteInternaA = getConsonanteInterna(apellidoPaterno).toUpperCase();
+            String consonanteInternaB = getConsonanteInterna(apellidoMaterno).toUpperCase();
+            String consonanteInternaC = getConsonanteInterna(nombre).toUpperCase();
+            String curp = primeraLetraApellidoPaterno;
+            curp = curp.concat(primeraVocalApellidoPaterno);
+            curp = curp.concat(primeraLetraSegundoApellidoMaterno);
+            curp = curp.concat(primeraLetraNombre);
+            curp = curp.concat(fechaNacimientoClean);
+            curp = curp.concat(sexoClean);
+            curp = curp.concat(codigoEntidad);
+            curp = curp.concat(consonanteInternaA);
+            curp = curp.concat(consonanteInternaB);
+            curp = curp.concat(consonanteInternaC);
 
-        int codigoVerificador = calcularCodigoVerificador(curp);
-        curp = curp.concat(new String(String.format("%02d",codigoVerificador)));
-        callBack.setCurp(curp);
+            int codigoVerificador = calcularCodigoVerificador(curp);
+            curp = curp.concat(new String(String.format("%02d", codigoVerificador)));
+            callBack.setCurp(curp);
+        } catch (StringIndexOutOfBoundsException e){
+            FirebaseCrash.logcat(Log.ERROR, Constants.TAG_LOG, "Error Caught");
+            FirebaseCrash.report(e);
+        } catch (Exception e){
+            FirebaseCrash.logcat(Log.ERROR, Constants.TAG_LOG, "Error Caught");
+            FirebaseCrash.report(e);
+        }
     }
 
     /**

@@ -14,9 +14,9 @@ public interface GenerateEmployeePresenterInterface {
 
     void getEdadAleatorio();
 
-    void getSexoAleatorio();
+    int getSexoAleatorio();
 
-    void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String sexo, String codigoEntidad);
+    void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int sexo, String codigoEntidad);
 
     void getEntidadAleatorio();
 
