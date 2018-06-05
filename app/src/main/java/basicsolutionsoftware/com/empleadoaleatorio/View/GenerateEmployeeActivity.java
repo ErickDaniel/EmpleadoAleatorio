@@ -163,7 +163,9 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         nombreEdt.setText(nombre);
         if(hasSegundoNombre){
             segundoNombreEdt.setVisibility(View.VISIBLE);
+            segundoNombreTil.setVisibility(View.VISIBLE);
         } else {
+            segundoNombreTil.setVisibility(View.GONE);
             segundoNombreEdt.setVisibility(View.GONE);
         }
         segundoNombreEdt.setText(segundoNombre);
