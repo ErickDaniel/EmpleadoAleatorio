@@ -164,19 +164,19 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     }
 
     @Override
-    public void getSexoAleatorio() {
-        callBack.setSexo(Utils.getRandomInt(5,6));
+    public int getSexoAleatorio() {
+        return Utils.getRandomInt(5,6);
     }
 
     @Override
-    public void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, String sexo, String codigoEntidad) {
+    public void generateCURPAleatorio(String nombre, String apellidoPaterno, String apellidoMaterno, String fechaNacimiento, int sexo, String codigoEntidad) {
         try {
             String primeraLetraApellidoPaterno = apellidoPaterno.substring(0, 1).toUpperCase();
             String primeraVocalApellidoPaterno = getPrimeraVocal(apellidoPaterno).toUpperCase();
             String primeraLetraSegundoApellidoMaterno = apellidoMaterno.substring(0, 1).toUpperCase();
             String primeraLetraNombre = nombre.substring(0, 1).toUpperCase();
             String fechaNacimientoClean = getFechaNacimientoClean(fechaNacimiento).toUpperCase();
-            String sexoClean = sexo.equals("Hombre") ? "H" : "M";
+            String sexoClean = sexo== 5 ? "H" : "M";
             String consonanteInternaA = getConsonanteInterna(apellidoPaterno).toUpperCase();
             String consonanteInternaB = getConsonanteInterna(apellidoMaterno).toUpperCase();
             String consonanteInternaC = getConsonanteInterna(nombre).toUpperCase();
@@ -190,7 +190,6 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
             curp = curp.concat(consonanteInternaA);
             curp = curp.concat(consonanteInternaB);
             curp = curp.concat(consonanteInternaC);
-            ;
 
             int codigoVerificador = calcularCodigoVerificador(curp);
             curp = curp.concat(new String(String.format("%02d", codigoVerificador)));

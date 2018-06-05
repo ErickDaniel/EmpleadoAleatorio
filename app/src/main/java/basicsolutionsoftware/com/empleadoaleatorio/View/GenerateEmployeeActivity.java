@@ -93,82 +93,112 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         getSupportActionBar().setTitle(R.string.aleatory_employee);
     }
 
+    private String nombre;
+    private String segundoNombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String fechaNacimiento;
+    private int edad;
+    private boolean cumplidos;
+    private boolean hasSegundoNombre;
+    private int sexo;
+    private String entidadNacimiento;
+    private String codigoEntidad;
+    private String curp;
+    private String nss;
+
     @OnClick(R.id.generar)
     public void generateAleatoryEmployee(Button button){
-        nssEdt.setText(presenter.getNssAleatory());
-        presenter.getSexoAleatorio();
-
-    }
-
-    @OnClick(R.id.generar_ine)
-    public void generarINE(Button b){
-        Dialog dialog = new Dialog(this);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.getWindow().setLayout(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        View viewDialog = getLayoutInflater().inflate(R.layout.ine_fragment, null);
-        dialog.setContentView(viewDialog);
-        dialog.show();
-    }
-
-    @Override
-    public void setNombreAleatorio(String object) {
-        nombreEdt.setText(object);
-    }
-
-    @Override
-    public void setSegundoNombreAleatorio(String object) {
-        segundoNombreEdt.setText(object);
-    }
-
-    @Override
-    public void setApellidoPaternoAleatorio(String object) {
-        apellidoPaternoEdt.setText(object);
-    }
-
-    @Override
-    public void setApellidoMaternoAleatorio(String object) {
-        apellidoMaternoEdt.setText(object);
-    }
-
-    @Override
-    public void setSexo(int sexo) {
-        if(sexo == InfoAleatoria.HOMBRE){
-            sexoEdt.setText(R.string.hombre);
-        } else {
-            sexoEdt.setText(R.string.mujer);
-        }
+        clearForm();
+        nss = presenter.getNssAleatory();
+        sexo = presenter.getSexoAleatorio();
+        hasSegundoNombre = Utils.getRandomInt(0,1) == 0;
         presenter.getNombreAleatorio(sexo);
-        if(Utils.getRandomInt(0,1) == 1) {
-            segundoNombreTil.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setNombreAleatorio(String nombreAleatorio) {
+        nombre = nombreAleatorio;
+        if(hasSegundoNombre){
             presenter.getSegundoNombreAleatorio(sexo);
         } else {
-            segundoNombreTil.setVisibility(View.GONE);
+            presenter.getApellidoPaternoAleatorio();
         }
+    }
+
+    @Override
+    public void setSegundoNombreAleatorio(String segundoNombreAleatorio) {
+        segundoNombre = segundoNombreAleatorio;
         presenter.getApellidoPaternoAleatorio();
+    }
+
+    @Override
+    public void setApellidoPaternoAleatorio(String apellidoPaternoAleatorio) {
+        apellidoPaterno = apellidoPaternoAleatorio;
         presenter.getApellidoMaternoAleatorio();
+    }
+
+    @Override
+    public void setApellidoMaternoAleatorio(String apellidoMaternoAleatorio) {
+        apellidoMaterno = apellidoMaternoAleatorio;
         presenter.getEdadAleatorio();
+    }
+
+    @Override
+    public void setEdad(String fechaCumpleanios, int edad, boolean cumplidos) {
+        this.fechaNacimiento = fechaCumpleanios;
+        this.edad = edad;
+        this.cumplidos = cumplidos;
         presenter.getEntidadAleatorio();
     }
 
     @Override
     public void setEntidadAleatoria(Entidad entidad) {
-        codigoEntidadEdt.setText(entidad.getCodigo());
-        entidadNacimientoEdt.setText(entidad.getEntidad());
-
-        presenter.generateCURPAleatorio(nombreEdt.getText().toString(), apellidoPaternoEdt.getText().toString(),
-                apellidoMaternoEdt.getText().toString(), fechaNacimientoEdt.getText().toString(),
-                sexoEdt.getText().toString(), codigoEntidadEdt.getText().toString());
-    }
-
-    @Override
-    public void setEdad(String fechaCumpleanios, int edad, boolean cumplidos) {
-        edadEdt.setText(Integer.toString(edad));
-        fechaNacimientoEdt.setText(fechaCumpleanios);
-        cumplidosCheckBox.setChecked(cumplidos);
+        this.codigoEntidad = entidad.getCodigo();
+        this.entidadNacimiento = entidad.getEntidad();
+        presenter.generateCURPAleatorio(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, codigoEntidad);
     }
 
     @Override
     public void setCurp(String curp) {
-        curpEdt.setText(curp);
+        this.curp = curp;
+        fillInputs();
     }
+
+    private void fillInputs(){
+        nombreEdt.setText(nombre);
+        if(hasSegundoNombre){
+            segundoNombreEdt.setVisibility(View.VISIBLE);
+        } else {
+            segundoNombreEdt.setVisibility(View.GONE);
+        }
+        segundoNombreEdt.setText(segundoNombre);
+        apellidoPaternoEdt.setText(apellidoPaterno);
+        apellidoMaternoEdt.setText(apellidoMaterno);
+        fechaNacimientoEdt.setText(fechaNacimiento);
+        edadEdt.setText(Integer.toString(edad));
+        cumplidosCheckBox.setChecked(cumplidos);
+        sexoEdt.setText(sexo==5?"Hombre":"Mujer");
+        codigoEntidadEdt.setText(codigoEntidad);
+        entidadNacimientoEdt.setText(entidadNacimiento);
+        curpEdt.setText(curp);
+        nssEdt.setText(nss);
+    }
+
+    private void clearForm(){
+        nombreEdt.setText("");
+        apellidoPaternoEdt.setText("");
+        apellidoMaternoEdt.setText("");
+        fechaNacimientoEdt.setText("");
+        edadEdt.setText("");
+        cumplidosCheckBox.setChecked(false);
+        sexoEdt.setText("");
+        codigoEntidadEdt.setText("");
+        entidadNacimientoEdt.setText("");
+        curpEdt.setText("");
+        nssEdt.setText("");
+    }
+
+
+
 }
