@@ -22,7 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".View.GenerateEmployeeActivity">
+        <activity android:name=".View.GenerateEmployeeActivity"
+                  android:configChanges="orientation|screenSize">
 
         </activity>
 

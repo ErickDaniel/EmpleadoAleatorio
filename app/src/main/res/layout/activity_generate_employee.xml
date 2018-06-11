@@ -225,7 +225,7 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:textAllCaps="false"
                 android:layout_below="@+id/nss_text_input_layout"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
         </RelativeLayout>
 

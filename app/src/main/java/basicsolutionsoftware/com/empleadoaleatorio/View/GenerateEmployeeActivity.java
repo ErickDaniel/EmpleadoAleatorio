@@ -1,7 +1,10 @@
 package basicsolutionsoftware.com.empleadoaleatorio.View;
 
 import android.app.Dialog;
-import android.graphics.drawable.ColorDrawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -12,13 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.firebase.crash.FirebaseCrash;
-
 import basicsolutionsoftware.com.empleadoaleatorio.BuildConfig;
-import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
 import basicsolutionsoftware.com.empleadoaleatorio.Presenter.GenerateEmployeePresenter;
@@ -114,6 +114,14 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         sexo = presenter.getSexoAleatorio();
         hasSegundoNombre = Utils.getRandomInt(0,1) == 0;
         presenter.getNombreAleatorio(sexo);
+    }
+
+    @OnClick(R.id.generar_ine)
+    public void generateIne(Button button){
+        Dialog dialogIne = new Dialog(this);
+        View viewIne = getLayoutInflater().inflate(R.layout.ine_fragment, null, false);
+        dialogIne.setContentView(viewIne);
+        dialogIne.show();
     }
 
     @Override

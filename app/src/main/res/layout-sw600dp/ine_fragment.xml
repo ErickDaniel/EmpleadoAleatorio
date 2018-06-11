@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <FrameLayout
+            android:layout_width="1370px"
+            android:layout_height="800px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ic_identificacion">
+
+            <TextView
+                android:id="@+id/fecha_nacimiento_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1165px"
+                android:layout_marginTop="209px"
+                android:fontFamily="serif"
+                android:text="31/05/1993"
+                android:textSize="23px"/>
+
+            <TextView
+                android:id="@+id/sexo_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1275px"
+                android:layout_marginTop="230px"
+                android:fontFamily="serif"
+                android:text="H"
+                android:textSize="23px"/>
+
+            <TextView
+                android:id="@+id/nombres_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="470px"
+                android:layout_marginTop="280px"
+                android:fontFamily="serif"
+                android:text="ERICK DANIEL"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/apellidos_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="470px"
+                android:layout_marginTop="330px"
+                android:fontFamily="serif"
+                android:text="JUAREZ GIL"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/domicilio_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="470px"
+                android:layout_marginTop="435px"
+                android:fontFamily="serif"
+                android:maxEms="12"
+                android:text="10 DE ABRIL PRIVADA 20 DE SEPTIEMBRE #3"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/clave_elector_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="687px"
+                android:layout_marginTop="523px"
+                android:fontFamily="serif"
+                android:text="JRGLER93053117H700"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/curp_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="540px"
+                android:layout_marginTop="568px"
+                android:fontFamily="serif"
+                android:text="JUGE930531HMSRLR04"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/anio_registro_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1113px"
+                android:layout_marginTop="568px"
+                android:fontFamily="serif"
+                android:text="2011 01"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/estado_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="565px"
+                android:layout_marginTop="617px"
+                android:fontFamily="serif"
+                android:text="17"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/localidad_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="600px"
+                android:layout_marginTop="663px"
+                android:fontFamily="serif"
+                android:text="0001"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/municipio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="617px"
+                android:layout_marginLeft="845px"
+                android:fontFamily="serif"
+                android:text="018"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/emision_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="663px"
+                android:layout_marginLeft="823px"
+                android:fontFamily="serif"
+                android:text="2018"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/seccion_identificacion_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="617px"
+                android:layout_marginLeft="1010px"
+                android:fontFamily="serif"
+                android:text="0645"
+                android:textSize="30px"/>
+
+            <TextView
+                android:id="@+id/vigencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="663px"
+                android:layout_marginLeft="1020px"
+                android:fontFamily="serif"
+                android:text="2028"
+                android:textSize="30px"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

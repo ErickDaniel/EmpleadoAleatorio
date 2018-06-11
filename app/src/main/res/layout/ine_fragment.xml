@@ -1,40 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="480px"
-        android:layout_height="300px"
-    android:background="@android:color/transparent">
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_gravity="center">
 
-    <ImageView
-        android:id="@+id/img_ine"
+    <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/credencial_elector"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/apellido_paterno_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="169px"
-        android:layout_marginTop="93px"
-        android:textSize="11px"
-        android:text="JUAREZ"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/apellido_materno_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="169px"
-        android:textSize="11px"
-        android:layout_below="@+id/apellido_paterno_tv"
-        android:text="GIL"/>
+            <FrameLayout
+                android:layout_width="685px"
+                android:layout_height="400px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/ic_identificacion">
 
-    <TextView
-        android:id="@+id/nombre_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="169px"
-        android:textSize="11px"
-        android:layout_below="@+id/apellido_materno_tv"
-        android:text="ERICK DANIEL"/>
+                <TextView
+                    android:id="@+id/fecha_nacimiento_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="578px"
+                    android:layout_marginTop="103px"
+                    android:fontFamily="serif"
+                    android:text="31/05/1993"
+                    android:textSize="13px"/>
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/sexo_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="638px"
+                    android:layout_marginTop="114px"
+                    android:fontFamily="serif"
+                    android:text="H"
+                    android:textSize="13px"/>
+
+                <TextView
+                    android:id="@+id/nombres_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="235px"
+                    android:layout_marginTop="138px"
+                    android:fontFamily="serif"
+                    android:text="ERICK DANIEL"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/apellidos_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="235px"
+                    android:layout_marginTop="163px"
+                    android:fontFamily="serif"
+                    android:text="JUAREZ GIL"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/domicilio_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="235px"
+                    android:layout_marginTop="213px"
+                    android:fontFamily="serif"
+                    android:maxEms="12"
+                    android:text="10 DE ABRIL PRIVADA 20 DE SEPTIEMBRE #3"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/clave_elector_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="340px"
+                    android:layout_marginTop="260px"
+                    android:fontFamily="serif"
+                    android:text="JRGLER93053117H700"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/curp_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="268px"
+                    android:layout_marginTop="284px"
+                    android:fontFamily="serif"
+                    android:text="JUGE930531HMSRLR04"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/anio_registro_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="558px"
+                    android:layout_marginTop="283px"
+                    android:fontFamily="serif"
+                    android:text="2011 01"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/estado_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="283px"
+                    android:layout_marginTop="308px"
+                    android:fontFamily="serif"
+                    android:text="17"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/localidad_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="299px"
+                    android:layout_marginTop="330px"
+                    android:fontFamily="serif"
+                    android:text="0001"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/municipio_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="308px"
+                    android:layout_marginLeft="423px"
+                    android:fontFamily="serif"
+                    android:text="018"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/emision_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="330px"
+                    android:layout_marginLeft="412px"
+                    android:fontFamily="serif"
+                    android:text="2018"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/seccion_identificacion_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="308px"
+                    android:layout_marginLeft="507px"
+                    android:fontFamily="serif"
+                    android:text="0645"
+                    android:textSize="16px"/>
+
+                <TextView
+                    android:id="@+id/vigencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="330px"
+                    android:layout_marginLeft="511px"
+                    android:fontFamily="serif"
+                    android:text="2028"
+                    android:textSize="16px"/>
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </HorizontalScrollView>
+
+</android.support.constraint.ConstraintLayout>
