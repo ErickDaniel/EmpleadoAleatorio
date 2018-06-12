@@ -21,8 +21,8 @@ android {
         applicationId "basicsolutionsoftware.com.empleadoaleatorio"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 6
-        versionName "2.1"
+        versionCode 8
+        versionName "2.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
