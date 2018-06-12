@@ -9,4 +9,11 @@
     <string name="version_">version</string>
     <string name="space">" "</string>
     <string name="created">Creada</string>
+    <string name="numero_de_intentos_fallidos_verifica_conexion_internet">Numero de intentos fallidos, verifique conexión a internet</string>
+    <string name="verifica_conexion_internet">Verifica tu conexión a internet</string>
+    <string name="error_de_servidor_reintento">Error del servidor</string>
+    <string name="error_de_sistema">Error interno de la aplicación</string>
+    <string name="numero_simbolo">#</string>
+    <string name="mexico">México</string>
+    <string name="coma">,</string>
 </resources>

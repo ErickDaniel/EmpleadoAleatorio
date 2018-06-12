@@ -49,10 +49,16 @@ public class GetInformacionAleatoria implements Task {
                         }
                         break;
                     case InfoAleatoria.APELLIDO_PATERNO:
-                        max = 2359;
+                        max = 108;
                         break;
                     case InfoAleatoria.APELLIDO_MATERNO:
-                        max = 893;
+                        max = 108;
+                        break;
+                    case InfoAleatoria.CALLE:
+                        max = 70;
+                        break;
+                    case InfoAleatoria.COLONIA:
+                        max = 47;
                         break;
                 }
                 callBack.onSuccess(nombresList.get(Utils.getRandomInt(0, max)));
@@ -66,7 +72,7 @@ public class GetInformacionAleatoria implements Task {
     }
 
     public interface GetGetInformacionAleatoriaCallBack {
-        void onSuccess(Object object);
+        void onSuccess(String object);
         void onError(String message);
     }
 

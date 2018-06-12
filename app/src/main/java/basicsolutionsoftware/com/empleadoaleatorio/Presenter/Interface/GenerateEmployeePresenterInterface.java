@@ -20,4 +20,21 @@ public interface GenerateEmployeePresenterInterface {
 
     void getEntidadAleatorio();
 
+    String getAnioRegistro(String fechaNacimiento);
+
+    String getLocalidadAleatoria();
+
+    String getMunicipioAleatorio();
+
+    String getSeccionAleatoria();
+
+    String getEmision(String anioRegistro);
+
+    String getURLFotografia(int sexo);
+
+    void getCalle();
+
+    void getColonia();
+
+    String getDomicilio(String colonia, String calle, String entidadNacimiento);
 }

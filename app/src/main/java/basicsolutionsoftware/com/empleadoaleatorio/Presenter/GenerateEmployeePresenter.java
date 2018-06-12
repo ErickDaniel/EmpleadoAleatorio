@@ -16,6 +16,7 @@ import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Manager.TaskManager;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
+import basicsolutionsoftware.com.empleadoaleatorio.Domain.UsesCases.GetURLFotografia;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.UsesCases.GetEntidadAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.UsesCases.GetInformacionAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Presenter.Interface.GenerateEmployeePresenterInterface;
@@ -69,7 +70,7 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     public void getNombreAleatorio(int sexo) {
         taskManager.execute(new GetInformacionAleatoria(context,sexo, InfoAleatoria.NOMBRE, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
             @Override
-            public void onSuccess(Object object) {
+            public void onSuccess(String object) {
                 callBack.setNombreAleatorio(object.toString());
             }
 
@@ -84,7 +85,7 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     public void getSegundoNombreAleatorio(int sexo) {
         taskManager.execute(new GetInformacionAleatoria(context,sexo, InfoAleatoria.SEGUNDO_NOMBRE, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
             @Override
-            public void onSuccess(Object object) {
+            public void onSuccess(String object) {
                 callBack.setSegundoNombreAleatorio(object.toString());
             }
 
@@ -99,7 +100,7 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     public void getApellidoPaternoAleatorio() {
         taskManager.execute(new GetInformacionAleatoria(context,1, InfoAleatoria.APELLIDO_PATERNO, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
             @Override
-            public void onSuccess(Object object) {
+            public void onSuccess(String object) {
                 callBack.setApellidoPaternoAleatorio(object.toString());
             }
 
@@ -114,7 +115,7 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
     public void getApellidoMaternoAleatorio() {
         taskManager.execute(new GetInformacionAleatoria(context,1, InfoAleatoria.APELLIDO_MATERNO, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
             @Override
-            public void onSuccess(Object object) {
+            public void onSuccess(String object) {
                 callBack.setApellidoMaternoAleatorio(object.toString());
             }
 
@@ -306,6 +307,102 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
             sum = sum + digit;
         }
         return sum;
+    }
+
+    @Override
+    public String getAnioRegistro(String fechaNacimiento) {
+        if(fechaNacimiento != null && !fechaNacimiento.isEmpty()) {
+            String arrayFechaNacimiento[] = fechaNacimiento.split("/");
+            anioInscripcion = Integer.parseInt(arrayFechaNacimiento[2]) + 18;
+            return Integer.toString(anioInscripcion).concat(" 01");
+        }
+        return "";
+    }
+
+    @Override
+    public String getLocalidadAleatoria() {
+        int localidadRandom = Utils.getRandomInt(0, 100);
+        return String.format("%04d", localidadRandom);
+    }
+
+    @Override
+    public String getMunicipioAleatorio() {
+        return String.format("%03d", Utils.getRandomInt(0, 99));
+    }
+
+    @Override
+    public String getSeccionAleatoria() {
+        int localidadRandom = Utils.getRandomInt(0, 800);
+        return String.format("%04d", localidadRandom);
+    }
+
+    @Override
+    public String getEmision(String anioRegistro) {
+        return Integer.toString(Utils.getRandomInt(2000, new DateTime().getYear()));
+    }
+
+    @Override
+    public String getURLFotografia(int sexo) {
+        taskManager.execute(new GetURLFotografia(context, sexo, new GetURLFotografia.GetURLFotografiaCallBack(){
+
+            @Override
+            public void onSuccess(String url) {
+                callBack.setURLImage(url);
+            }
+
+            @Override
+            public void onError(String message) {
+                callBack.showError(message);
+            }
+        }));
+        return null;
+    }
+
+    @Override
+    public void getCalle() {
+        taskManager.execute(new GetInformacionAleatoria(context, 0, InfoAleatoria.CALLE, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
+            @Override
+            public void onSuccess(String object) {
+                callBack.setCalle(object);
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        }));
+    }
+
+    @Override
+    public void getColonia() {
+        taskManager.execute(new GetInformacionAleatoria(context, 0, InfoAleatoria.COLONIA, new GetInformacionAleatoria.GetGetInformacionAleatoriaCallBack() {
+            @Override
+            public void onSuccess(String object) {
+                callBack.setColonia(object);
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        }));
+    }
+
+    @Override
+    public String getDomicilio(String colonia, String calle, String entidadNacimiento) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(calle);
+        stringBuilder.append(context.getString(R.string.space));
+        stringBuilder.append(context.getString(R.string.numero_simbolo));
+        stringBuilder.append(Integer.toString(Utils.getRandomInt(0, 500)));
+        stringBuilder.append(context.getString(R.string.space));
+        stringBuilder.append(colonia);
+        stringBuilder.append(context.getString(R.string.space));
+        stringBuilder.append(entidadNacimiento);
+        stringBuilder.append(context.getString(R.string.coma));
+        stringBuilder.append(context.getString(R.string.space));
+        stringBuilder.append(context.getString(R.string.mexico));
+        return stringBuilder.toString();
     }
 
     private final int[] DICCIONARIO_SUB_DELEGACION = {90, 91, 92, 93, 94, 95, 96, 97};

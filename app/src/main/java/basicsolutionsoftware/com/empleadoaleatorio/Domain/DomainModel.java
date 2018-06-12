@@ -1,11 +1,20 @@
 package basicsolutionsoftware.com.empleadoaleatorio.Domain;
 
 import android.content.Context;
+
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.FileSystem;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
+import basicsolutionsoftware.com.empleadoaleatorio.R;
+import basicsolutionsoftware.com.empleadoaleatorio.Service.Request;
 
 public class DomainModel {
 
@@ -53,6 +62,12 @@ public class DomainModel {
             case InfoAleatoria.ENTIDAD:
                 fileName = "entidades.json";
                 break;
+            case InfoAleatoria.CALLE:
+                fileName = "calles.json";
+                break;
+            case InfoAleatoria.COLONIA:
+                fileName = "colonias.json";
+                break;
         }
         try{
             readTextFile(fileName, new DomainModelCallBack() {
@@ -99,6 +114,29 @@ public class DomainModel {
         } catch (IOException e) {
             Utils.printLogError(e.getMessage(), true, false);
         }
+    }
+
+    public void getURLFotografia(int sexo, final DomainModelCallBack domainModelCallBack) {
+        Request.getRequestInstance().getURLFotografia(context, sexo, new Request.WsCallBack() {
+            @Override
+            public void onSuccess(JSONObject jsonObject) {
+                try {
+                    JSONArray results = jsonObject.getJSONArray("results");
+                    JSONObject arrayData = results.getJSONObject(0);
+                    JSONObject picture = arrayData.getJSONObject("picture");
+                    String pictureURL = picture.getString("large");
+                    domainModelCallBack.onSuccess(pictureURL);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    domainModelCallBack.onError(e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailed(String mensaje) {
+                domainModelCallBack.onError(mensaje);
+            }
+        });
     }
 
     public interface DomainModelCallBack{

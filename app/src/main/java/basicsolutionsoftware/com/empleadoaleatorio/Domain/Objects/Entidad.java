@@ -2,22 +2,31 @@ package basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects;
 
 public class Entidad {
 
-    private String entidad;
-    private String codigo;
+    private int codigo;
+    private String entidadFederativa;
+    private String abreviatura;
 
-    public String getEntidad() {
-        return entidad;
-    }
-
-    public void setEntidad(String entidad) {
-        this.entidad = entidad;
-    }
-
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
+    }
+
+    public String getEntidadFederativa() {
+        return entidadFederativa;
+    }
+
+    public void setEntidadFederativa(String entidadFederativa) {
+        this.entidadFederativa = entidadFederativa;
+    }
+
+    public String getAbreviatura() {
+        return abreviatura;
+    }
+
+    public void setAbreviatura(String abreviatura) {
+        this.abreviatura = abreviatura;
     }
 }

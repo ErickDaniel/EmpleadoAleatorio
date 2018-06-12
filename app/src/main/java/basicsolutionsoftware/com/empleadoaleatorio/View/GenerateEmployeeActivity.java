@@ -1,10 +1,6 @@
 package basicsolutionsoftware.com.empleadoaleatorio.View;
 
 import android.app.Dialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -15,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.firebase.crash.FirebaseCrash;
 import basicsolutionsoftware.com.empleadoaleatorio.BuildConfig;
@@ -93,19 +88,23 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         getSupportActionBar().setTitle(R.string.aleatory_employee);
     }
 
-    private String nombre;
-    private String segundoNombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String fechaNacimiento;
-    private int edad;
-    private boolean cumplidos;
-    private boolean hasSegundoNombre;
-    private int sexo;
-    private String entidadNacimiento;
-    private String codigoEntidad;
-    private String curp;
-    private String nss;
+    private String nombre = "";
+    private String segundoNombre = "";
+    private String apellidoPaterno = "";
+    private String apellidoMaterno = "";
+    private String fechaNacimiento = "";
+    private int edad = 0;
+    private boolean cumplidos = false;
+    private boolean hasSegundoNombre = false;
+    private int sexo = 0;
+    private String entidadNacimiento = "";
+    private String abreviatura = "";
+    private int codigoEntidad = 00;
+    private String curp = "";
+    private String nss = "";
+    private String domicilio = "";
+    private String colonia = "";
+    private String calle = "";
 
     @OnClick(R.id.generar)
     public void generateAleatoryEmployee(Button button){
@@ -116,12 +115,39 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         presenter.getNombreAleatorio(sexo);
     }
 
+    private DialogIne dialogIne;
     @OnClick(R.id.generar_ine)
     public void generateIne(Button button){
-        Dialog dialogIne = new Dialog(this);
-        View viewIne = getLayoutInflater().inflate(R.layout.ine_fragment, null, false);
-        dialogIne.setContentView(viewIne);
+        DialogIne.DialogIneData dialogIneData = new DialogIne.DialogIneData();
+        dialogIneData.setNombres(nombre.concat(getString(R.string.space).concat(segundoNombre == null ? "": segundoNombre)));
+        dialogIneData.setApellidos(apellidoPaterno.concat(getString(R.string.space)).concat(apellidoMaterno));
+        dialogIneData.setCurp(curp);
+        dialogIneData.setEstado(abreviatura);
+        dialogIneData.setEstado(Integer.toString(codigoEntidad));
+        dialogIneData.setFechaNacimiento(fechaNacimiento);
+        dialogIneData.setSexo(sexo == 5 ? "H" : "M");
+        dialogIneData.setLocalidad(presenter.getLocalidadAleatoria());
+        dialogIneData.setMunicipio(presenter.getMunicipioAleatorio());
+        dialogIneData.setSeccion(presenter.getSeccionAleatoria());
+        dialogIneData.setAnioRegistro(presenter.getAnioRegistro(fechaNacimiento));
+        dialogIneData.setEmision(presenter.getEmision(dialogIneData.getAnioRegistro()));
+        dialogIneData.setVigencia(Integer.toString(Integer.parseInt(dialogIneData.getEmision()) + 10));
+        dialogIneData.setURLFotografia(presenter.getURLFotografia(sexo));
+        dialogIneData.setDomicilio(presenter.getDomicilio(colonia, calle, entidadNacimiento));
+        dialogIne = new DialogIne(this, dialogIneData);
         dialogIne.show();
+    }
+
+    @Override
+    public void setURLImage(String url) {
+        if(dialogIne != null){
+            dialogIne.refreshImage(url);
+        }
+    }
+
+    @Override
+    public void showError(String msg) {
+
     }
 
     @Override
@@ -163,14 +189,27 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
     @Override
     public void setEntidadAleatoria(Entidad entidad) {
         this.codigoEntidad = entidad.getCodigo();
-        this.entidadNacimiento = entidad.getEntidad();
-        presenter.generateCURPAleatorio(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, codigoEntidad);
+        this.entidadNacimiento = entidad.getEntidadFederativa();
+        this.abreviatura = entidad.getAbreviatura();
+        presenter.generateCURPAleatorio(nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo, abreviatura);
+        presenter.getCalle();
+        presenter.getColonia();
     }
 
     @Override
     public void setCurp(String curp) {
         this.curp = curp;
         fillInputs();
+    }
+
+    @Override
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
+    }
+
+    @Override
+    public void setCalle(String object) {
+        this.calle = object;
     }
 
     private void fillInputs(){
@@ -189,7 +228,7 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
         edadEdt.setText(Integer.toString(edad));
         cumplidosCheckBox.setChecked(cumplidos);
         sexoEdt.setText(sexo==5?"Hombre":"Mujer");
-        codigoEntidadEdt.setText(codigoEntidad);
+        codigoEntidadEdt.setText(Integer.toString(codigoEntidad));
         entidadNacimientoEdt.setText(entidadNacimiento);
         curpEdt.setText(curp);
         nssEdt.setText(nss);

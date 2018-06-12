@@ -21,6 +21,34 @@
             android:layout_alignParentTop="true"
             android:background="@drawable/ic_identificacion">
 
+            <ImageView
+                android:id="@+id/image_person_tv"
+                android:layout_width="335px"
+                android:layout_height="438px"
+                android:layout_marginLeft="109px"
+                android:layout_marginTop="271px"
+                android:scaleType="centerCrop"
+                android:alpha=".5"/>
+
+            <ImageView
+                android:id="@+id/image_person_small_iv"
+                android:layout_width="170px"
+                android:layout_height="210px"
+                android:layout_marginLeft="1150px"
+                android:layout_marginTop="310px"
+                android:scaleType="centerCrop"
+                android:alpha=".2"/>
+
+            <TextView
+                android:id="@+id/name_person_tv"
+                android:layout_width="170px"
+                android:layout_height="210px"
+                android:layout_marginLeft="1150px"
+                android:layout_marginTop="310px"
+                android:textSize="5dp"
+                android:gravity="center"
+                android:alpha=".4"/>
+
             <TextView
                 android:id="@+id/fecha_nacimiento_identificacion_tv"
                 android:layout_width="wrap_content"
@@ -28,8 +56,8 @@
                 android:layout_marginLeft="1165px"
                 android:layout_marginTop="209px"
                 android:fontFamily="serif"
-                android:text="31/05/1993"
-                android:textSize="23px"/>
+                android:textSize="25px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/sexo_identificacion_tv"
@@ -38,8 +66,8 @@
                 android:layout_marginLeft="1275px"
                 android:layout_marginTop="230px"
                 android:fontFamily="serif"
-                android:text="H"
-                android:textSize="23px"/>
+                android:textSize="25px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/nombres_identificacion_tv"
@@ -48,8 +76,8 @@
                 android:layout_marginLeft="470px"
                 android:layout_marginTop="280px"
                 android:fontFamily="serif"
-                android:text="ERICK DANIEL"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/apellidos_identificacion_tv"
@@ -58,19 +86,20 @@
                 android:layout_marginLeft="470px"
                 android:layout_marginTop="330px"
                 android:fontFamily="serif"
-                android:text="JUAREZ GIL"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/domicilio_identificacion_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="470px"
-                android:layout_marginTop="435px"
+                android:layout_marginTop="430px"
                 android:fontFamily="serif"
-                android:maxEms="12"
-                android:text="10 DE ABRIL PRIVADA 20 DE SEPTIEMBRE #3"
-                android:textSize="30px"/>
+                android:maxEms="21"
+                android:maxLines="3"
+                android:textSize="25px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/clave_elector_identificacion_tv"
@@ -79,8 +108,8 @@
                 android:layout_marginLeft="687px"
                 android:layout_marginTop="523px"
                 android:fontFamily="serif"
-                android:text="JRGLER93053117H700"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/curp_identificacion_tv"
@@ -89,8 +118,8 @@
                 android:layout_marginLeft="540px"
                 android:layout_marginTop="568px"
                 android:fontFamily="serif"
-                android:text="JUGE930531HMSRLR04"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/anio_registro_identificacion_tv"
@@ -99,8 +128,8 @@
                 android:layout_marginLeft="1113px"
                 android:layout_marginTop="568px"
                 android:fontFamily="serif"
-                android:text="2011 01"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/estado_identificacion_tv"
@@ -109,8 +138,8 @@
                 android:layout_marginLeft="565px"
                 android:layout_marginTop="617px"
                 android:fontFamily="serif"
-                android:text="17"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/localidad_identificacion_tv"
@@ -119,18 +148,18 @@
                 android:layout_marginLeft="600px"
                 android:layout_marginTop="663px"
                 android:fontFamily="serif"
-                android:text="0001"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/municipio"
+                android:id="@+id/municipio_identificacion_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="617px"
                 android:layout_marginLeft="845px"
                 android:fontFamily="serif"
-                android:text="018"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/emision_identificacion_tv"
@@ -139,8 +168,8 @@
                 android:layout_marginTop="663px"
                 android:layout_marginLeft="823px"
                 android:fontFamily="serif"
-                android:text="2018"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/seccion_identificacion_tv"
@@ -149,8 +178,8 @@
                 android:layout_marginTop="617px"
                 android:layout_marginLeft="1010px"
                 android:fontFamily="serif"
-                android:text="0645"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
             <TextView
                 android:id="@+id/vigencia"
@@ -159,8 +188,8 @@
                 android:layout_marginTop="663px"
                 android:layout_marginLeft="1020px"
                 android:fontFamily="serif"
-                android:text="2028"
-                android:textSize="30px"/>
+                android:textSize="30px"
+                android:textColor="@android:color/black"/>
 
         </FrameLayout>
 

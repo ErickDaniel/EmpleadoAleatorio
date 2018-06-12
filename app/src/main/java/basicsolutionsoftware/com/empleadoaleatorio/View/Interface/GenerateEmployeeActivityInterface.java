@@ -17,4 +17,12 @@ public interface GenerateEmployeeActivityInterface {
     void setEntidadAleatoria(Entidad entidad);
 
     void setCurp(String curp);
+
+    void setURLImage(String url);
+
+    void showError(String msg);
+
+    void setCalle(String object);
+
+    void setColonia(String object);
 }
