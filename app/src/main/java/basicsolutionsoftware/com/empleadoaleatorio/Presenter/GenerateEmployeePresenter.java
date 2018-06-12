@@ -2,15 +2,10 @@ package basicsolutionsoftware.com.empleadoaleatorio.Presenter;
 
 import android.content.Context;
 import android.util.Log;
-
-import com.google.firebase.crash.FirebaseCrash;
-
 import org.joda.time.DateTime;
 import org.joda.time.Days;
-
 import java.util.Calendar;
 import java.util.Random;
-
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Constants;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.InfoAleatoria;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
@@ -33,7 +28,6 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
         this.context = context;
         this.callBack = callBack;
         this.taskManager = new TaskManager();
-        FirebaseCrash.log(this.getClass().toString().concat(context.getString(R.string.space)).concat(context.getString(R.string.created)));
     }
 
     private final String FORMAT_VALUE = "%04d";
@@ -196,11 +190,9 @@ public class GenerateEmployeePresenter implements GenerateEmployeePresenterInter
             curp = curp.concat(new String(String.format("%02d", codigoVerificador)));
             callBack.setCurp(curp);
         } catch (StringIndexOutOfBoundsException e){
-            FirebaseCrash.logcat(Log.ERROR, Constants.TAG_LOG, "Error Caught");
-            FirebaseCrash.report(e);
+            Utils.printLogError(e.getMessage(), true, false);
         } catch (Exception e){
-            FirebaseCrash.logcat(Log.ERROR, Constants.TAG_LOG, "Error Caught");
-            FirebaseCrash.report(e);
+            Utils.printLogError(e.getMessage(), true, false);
         }
     }
 

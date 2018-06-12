@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.google.firebase.crash.FirebaseCrash;
 import basicsolutionsoftware.com.empleadoaleatorio.BuildConfig;
 import basicsolutionsoftware.com.empleadoaleatorio.Commons.Utils;
 import basicsolutionsoftware.com.empleadoaleatorio.Domain.Objects.Entidad;
@@ -47,7 +46,6 @@ public class GenerateEmployeeActivity extends AppCompatActivity implements Gener
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_employee);
-        FirebaseCrash.log(this.getClass().toString().concat(getString(R.string.space)).concat(getString(R.string.created)));
         ButterKnife.bind(this);
         initToolBar();
         presenter = new GenerateEmployeePresenter(this, this);
