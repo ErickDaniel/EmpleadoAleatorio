@@ -18,7 +18,7 @@ apply plugin: 'io.fabric'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "basicsolutionsoftware.com.empleadoaleatorio"
+        applicationId "basicsolutionsoftware.com.datosaleatorios"
         minSdkVersion 23
         targetSdkVersion 27
         versionCode 8
